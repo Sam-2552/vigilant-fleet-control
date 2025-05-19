@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -67,7 +66,16 @@ const ModuleCard: React.FC<ModuleCardProps> = ({
 
 const DashboardView: React.FC<DashboardViewProps> = ({ role }) => {
   const getModules = () => {
-    const driverModules = [
+    // Define module interface to match the required props
+    interface ModuleType {
+      title: string;
+      description: string;
+      icon: React.ReactNode;
+      path: string;
+      badgeCount?: number;
+    }
+
+    const driverModules: ModuleType[] = [
       {
         title: "Feedback System",
         description: "Submit feedback about alert accuracy and system performance",
@@ -101,7 +109,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ role }) => {
       },
     ];
 
-    const ownerModules = [
+    const ownerModules: ModuleType[] = [
       {
         title: "Driver Details",
         description: "Manage your drivers and review their profiles",
@@ -142,7 +150,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ role }) => {
       },
     ];
 
-    const clientModules = [
+    const clientModules: ModuleType[] = [
       {
         title: "Owner Details",
         description: "Manage fleet owners registered under your account",
@@ -163,7 +171,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ role }) => {
       },
     ];
 
-    const adminModules = [
+    const adminModules: ModuleType[] = [
       {
         title: "Client Management",
         description: "Manage client accounts and their details",
